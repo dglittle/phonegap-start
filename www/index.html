@@ -35,6 +35,7 @@ function addTime(t) {
         clearTimeout(timeout)
         timeout = setTimeout(addTime, 1000)
     } else if (stopTime > 0) {
+        timeDiv.text('buzz!!!')
         navigator.notification.vibrate(1500)
     }
 }
