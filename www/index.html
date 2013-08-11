@@ -29,11 +29,13 @@ function updateTime() {
 updateTime()
 
 function addTime(t) {
-    if (stopTime < _.time()) stopTime = _.time()
-    if (t) stopTime += t
+    if (t) {
+        if (stopTime < _.time()) stopTime = _.time()
+        stopTime += t
+    }
 
+    clearTimeout(timeout)
     if (updateTime() > 0) {
-        clearTimeout(timeout)
         timeout = setTimeout(addTime, 1000)
     } else if (stopTime > 0) {
         timeDiv.text('buzz!!!')
